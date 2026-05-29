@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import UserCard from './components/UserCard';
+import React, { useState, useEffect } from 'react';
+import Timer from './components/Timer';
 
 function App() {
+  const [show, setShow] = useState(true);
+  const [userId, setUserId] = useState(1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: '2rem' }}>
+      <h1>Lifecycle Lab</h1>
+      <button onClick={() => setShow(s => !s)}>
+        {show ? 'Unmount Timer' : 'Mount Timer'}
+      </button>
+      {show && <Timer />}
+      <label>
+    Select User:
+    <select value={userId} onChange={e => setUserId(Number(e.target.value))}>
+      {[1,2,3,4,5].map(id => <option key={id} value={id}>User {id}</option>)}
+    </select>
+  </label>
+  <UserCard userId={userId} />
     </div>
   );
 }
-
 export default App;
