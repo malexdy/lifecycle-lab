@@ -52,16 +52,12 @@ pipeline {
     }
 
     post {
-    success {
-        mail to: 'adady316@gmail.com',
-             subject: "BUILD SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-             body: "Good news! Build ${env.BUILD_URL} completed successfully."
-    }
-    failure {
-        mail to: 'adady316@gmail.com',
-             subject: "BUILD FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-             body: "Build ${env.BUILD_URL} has failed. Please check the logs."
-    }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline FAILED — check the logs above.'
+        }
     }
 
 }
