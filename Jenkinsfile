@@ -17,23 +17,18 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                // Maven:  sh 'mvn clean package -DskipTests'
-                // Gradle: sh './gradlew build'
-                sh 'npm install && npm run build'
-                sh 'echo Build step — replace with your command'
+                bat 'npm install && npm run build'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Maven:  sh 'mvn test'
-                sh 'npm test'
-                sh 'echo Test step — replace with your command'
+                bat 'npm test -- --watchAll=false --passWithNoTests'
             }
             post {
                 always {
-                    //junit '**/target/surefire-reports/*.xml'
+                    junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
                 }
             }
         }
