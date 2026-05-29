@@ -17,14 +17,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                bat 'npm install && npm run build'
+                // Maven:  sh 'mvn clean package -DskipTests'
+                // Gradle: sh './gradlew build'
+                sh 'npm start'
+                sh 'echo Build step — replace with your command'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                bat 'npm test -- --watchAll=false'
+                // Maven:  sh 'mvn test'
+                sh 'npm test'
+                sh 'echo Test step — replace with your command'
             }
             post {
                 always {
