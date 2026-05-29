@@ -41,12 +41,12 @@ pipeline {
         }
 
         stage('Deploy') {
-    steps {
-        echo 'Simulating deployment...'
-        sh 'cp -r ./build /tmp/deployed-app'
-        echo 'Application deployed to /tmp/deployed-app'
-    }
-}
+            steps {
+                echo 'Simulating deployment...'
+                bat 'if exist build ( xcopy /E /I /Y build C:\\temp\\deployed-app )'
+                echo 'Application deployed to C:\\temp\\deployed-app'
+            }
+        }
 
 
     }
