@@ -1,5 +1,5 @@
 import UserCard from './components/UserCard';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Timer from './components/Timer';
 
 function App() {

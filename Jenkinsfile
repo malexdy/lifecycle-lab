@@ -19,7 +19,7 @@ pipeline {
                 echo 'Building the project...'
                 // Maven:  sh 'mvn clean package -DskipTests'
                 // Gradle: sh './gradlew build'
-                sh 'npm start'
+                sh 'npm install && npm run build'
                 sh 'echo Build step — replace with your command'
             }
         }
